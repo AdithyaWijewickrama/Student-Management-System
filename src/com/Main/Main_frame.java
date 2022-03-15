@@ -1392,10 +1392,10 @@ public final class Main_frame extends javax.swing.JFrame {
             String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "' WHERE Username='"+username+"'";
             Sql.Execute(sql, DBconnect.CONN);
             if (jTextField1.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE WHERE Username='"+username+"'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE  Username='"+username+"'"), jTextField1.getText());
             }
             if (jTextField2.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE WHERE Username='"+username+"'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE Username='"+username+"'"), jTextField1.getText());
             }
         } catch (SQLException ex) {
             Commons.showMsg(ex);
