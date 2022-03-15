@@ -51,6 +51,8 @@ import static com.SystemSecurity.User_login.username;
 import com.database.Sql;
 import java.io.File;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -1389,17 +1391,15 @@ public final class Main_frame extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "' WHERE Username='"+username+"'";
+            String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "' WHERE Username='" + username + "'";
             Sql.Execute(sql, DBconnect.CONN);
             if (jTextField1.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE  Username='"+username+"'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE  Username='" + username + "'"), jTextField1.getText());
             }
             if (jTextField2.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE Username='"+username+"'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE Username='" + username + "'"), jTextField1.getText());
             }
-        } catch (SQLException ex) {
-            Commons.showMsg(ex);
-        } catch (IOException ex) {
+        } catch (SQLException | IOException ex) {
             Commons.showMsg(ex);
         }
     }//GEN-LAST:event_jButton7ActionPerformed

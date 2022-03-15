@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 public class BarCode {
 
@@ -41,7 +40,9 @@ public class BarCode {
     public static void create(String data, String path, BarcodeFormat formate, int w, int h) throws WriterException, IOException {
         BitMatrix matrix = new MultiFormatWriter().encode(new String(data.getBytes("UTF-8"), "UTF-8"), formate, w, h);
         MatrixToImageConfig f = new MatrixToImageConfig();
-        MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1), new File(path), f);
+        File file=File.createTempFile("SMS Temp file", path.substring(path.lastIndexOf('.') + 1));
+        file.deleteOnExit();
+        MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1), file, f);
     }
 
     public static String read(String path) throws FileNotFoundException, IOException, NotFoundException {
