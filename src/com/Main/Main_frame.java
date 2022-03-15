@@ -1027,10 +1027,10 @@ public final class Main_frame extends javax.swing.JFrame {
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(currentFrameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1393,10 +1393,10 @@ public final class Main_frame extends javax.swing.JFrame {
         try {
             String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "' WHERE Username='" + username + "'";
             Sql.Execute(sql, DBconnect.CONN);
-            if (jTextField1.getText().equals("")) {
+            if (!jTextField1.getText().equals("")) {
                 Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE  Username='" + username + "'"), jTextField1.getText());
             }
-            if (jTextField2.getText().equals("")) {
+            if (!jTextField2.getText().equals("")) {
                 Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE Username='" + username + "'"), jTextField1.getText());
             }
         } catch (SQLException | IOException ex) {

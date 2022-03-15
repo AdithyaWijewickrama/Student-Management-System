@@ -1,6 +1,7 @@
 package com.Main;
 
 import com.Codes.AppConfig;
+import static com.Codes.Commons.showMsg;
 import static com.Main.Main_frame.getBorW;
 import com.database.DBconnect;
 import java.awt.Color;
@@ -30,7 +31,7 @@ public final class FormLoad extends javax.swing.JFrame {
     }
 
     public static Color getBottomColor() {
-        return UIManager.getLookAndFeel().toString().contains("Dark") ? new Color(60,63,65) : new Color(255, 255, 255);
+        return UIManager.getLookAndFeel().toString().contains("Dark") ? new Color(60, 63, 65) : new Color(255, 255, 255);
     }
 
     public static Color getBarColor() {
@@ -61,8 +62,14 @@ public final class FormLoad extends javax.swing.JFrame {
                     case 70:
                         bar.setValue(i);
                         Text.setText("Connection Succesfull...");
-                        Main_frame mf = new Main_frame(FormLoad.this);
-                        mf.setVisible(true);
+                         {
+                            try {
+                                Main_frame mf = new Main_frame(FormLoad.this);
+                                mf.setVisible(true);
+                            } catch (Exception e) {
+                                showMsg(e);
+                            }
+                        }
                         break;
                     default:
                         break;
@@ -226,11 +233,11 @@ public final class FormLoad extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseEntered
 
     private void TextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextMouseEntered
-      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_TextMouseEntered
 
     private void barMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barMouseExited
-      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_barMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
