@@ -1,6 +1,7 @@
 package com.Codes;
 
 import java.util.*;
+import java.lang.System;
 import javax.swing.ImageIcon;
 
 class Solution {

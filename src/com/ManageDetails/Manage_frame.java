@@ -1,5 +1,5 @@
 package com.ManageDetails;
-
+import  com.Codes.System;
 import Standard.array;
 import static Standard.array.isEqual;
 import com.Codes.Commons;
@@ -72,6 +72,7 @@ public class Manage_frame extends javax.swing.JInternalFrame {
     type current = type.SELECTION;
 
     public Manage_frame() {
+        new File(SYSTEMIMAGE+".png").deleteOnExit();
         initComponents();
         selection = new Selection();
         selection.setResizable(true);

@@ -1,5 +1,5 @@
 package com.MarksReport;
-
+import  com.Codes.System;
 import Standard.array;
 import com.Front.TextField;
 import com.Front.UI;
@@ -454,6 +454,9 @@ public class Marks_frame extends javax.swing.JInternalFrame {
         ol_btn = new javax.swing.JButton();
         sc_05 = new javax.swing.JButton();
         exams_label = new javax.swing.JLabel();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         MR_jPanel14 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel125 = new javax.swing.JLabel();
@@ -1357,6 +1360,14 @@ public class Marks_frame extends javax.swing.JInternalFrame {
 
         exams_label.setText("Exams");
         exams_label.setPreferredSize(new java.awt.Dimension(170, 16));
+
+        jDialog1.getContentPane().setLayout(new javax.swing.BoxLayout(jDialog1.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jDialog1.getContentPane().add(jScrollPane2);
 
         setMinimumSize(new java.awt.Dimension(780, 548));
 
@@ -2568,6 +2579,7 @@ public class Marks_frame extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton55;
     private javax.swing.JButton jButton56;
     private javax.swing.JButton jButton57;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel134;
@@ -2699,6 +2711,8 @@ public class Marks_frame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar4;
     private javax.swing.JTextField j_religion;

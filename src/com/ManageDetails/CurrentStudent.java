@@ -1,9 +1,8 @@
 package com.ManageDetails;
 
-import com.Codes.Commons.*;
 import static com.Codes.Commons.*;
 import com.Front.UI;
-import com.Codes.AppConfig;
+import com.Codes.AppConfig;import  com.Codes.System;
 import com.Codes.Commons;
 import com.Main.Main_frame;
 import static com.Main.Main_frame.getBorW;

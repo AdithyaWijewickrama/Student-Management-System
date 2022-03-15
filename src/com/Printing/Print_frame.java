@@ -6,6 +6,7 @@ import com.Codes.AppConfig;
 import com.Codes.Commons;
 import static com.Codes.Commons.getImage;
 import static com.Codes.Commons.setDefault;
+import static com.Codes.Commons.showMsg;
 import static com.Codes.Commons.tableload;
 import com.Codes.ImageWriter;
 import com.Communication.Mail;
@@ -63,13 +64,14 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import com.Codes.System;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 public class Print_frame extends javax.swing.JInternalFrame {
 
     private String SetDirectory;
-    private String[] selectedIds;
+    public String[] selectedIds;
     private JTable table;
     public CurrentStudent cs;
     public Selection sel;
@@ -1109,8 +1111,8 @@ public class Print_frame extends javax.swing.JInternalFrame {
         String Smr[][] = null;
         int grade = Integer.parseInt(String.copyValueOf(gradeC.getSelectedItem().toString().toCharArray(), 0, 2));
         String term = TermC.getSelectedItem().toString();
-        File rImage = setImage(LImage, gsi(Right), id);
-        File lImage = setImage(RImage, gsi(Left), id);
+        File rImage = setImage(RImage, gsi(Right), id);
+        File lImage = setImage(LImage, gsi(Left), id);
         File barCode = new File(getQRCodeName(id));
         try {
             createQRCode(id, getQRCodeName(id), BarcodeFormat.QR_CODE);
@@ -1159,7 +1161,7 @@ public class Print_frame extends javax.swing.JInternalFrame {
                         m.Print();
                         break;
                     case "ID Card":
-                        Identy idc = printIdenty(title[0], jCheckBox12.isSelected() ? rImage.getAbsolutePath() : "", jCheckBox13.isSelected() ? lImage.getAbsolutePath() : "", barCode.getAbsolutePath(), desc, out, ext);
+                        Identy idc = printIdenty(title[0], jCheckBox12.isSelected() ? lImage.getAbsolutePath() : "", jCheckBox13.isSelected() ? rImage.getAbsolutePath() : "", barCode.getAbsolutePath(), desc, out, ext);
                         idc.Print();
                         break;
                     case "Students Details(Multiple)":
@@ -1212,6 +1214,7 @@ public class Print_frame extends javax.swing.JInternalFrame {
                 msg.setPath(out.concat("." + ext.getEXT()));
                 msg.display();
             } catch (Exception ex) {
+                System.out.println("**********************************Print error***********************************\n\t"+ex);
                 Logger.getLogger(Print_frame.class.getName()).log(Level.WARNING, null, ex);
                 TrayMessage msg = new TrayMessage(("Could not save" + getDecrypted(FileName.getText(), idbox1.getText()) + "." + FileExtention.getSelectedItem().toString()), AppConfig.APPICON_50, AppConfig.APPNAME, "Error", TrayIcon.MessageType.ERROR);
                 try {
@@ -1509,6 +1512,9 @@ public class Print_frame extends javax.swing.JInternalFrame {
         Container[] c = {jPanel24, jPanel25, jPanel26, jPanel27, jPanel28};
         for (Container container : c) {
             container.setEnabled(t);
+            for (Component c1 : container.getComponents()) {
+                c1.setEnabled(t);
+            }
         }
     }
 
@@ -1518,12 +1524,16 @@ public class Print_frame extends javax.swing.JInternalFrame {
             setEnabled(false);
             new Thread(() -> {
                 for (String Id : selectedIds) {
-                    load(Id);
-                    String out = SaveDir.getText().concat("\\" + getDecrypted(FileName.getText(), idbox1.getText()));
-                    String selection = jComboBox1.getSelectedItem().toString();
-                    Extention ext = Extention.valueOf(FileExtention.getSelectedItem().toString().toUpperCase());
-                    printWhole(Id, selection, out, ext);
-                    if (gsi(jComboBox1).equals("Marks Report(Multiple)")) {
+                    try {
+                        load(Id);
+                        String out = SaveDir.getText().concat("\\" + getDecrypted(FileName.getText(), idbox1.getText()));
+                        String selection = jComboBox1.getSelectedItem().toString();
+                        Extention ext = Extention.valueOf(FileExtention.getSelectedItem().toString().toUpperCase());
+                        printWhole(Id, selection, out, ext);
+                    } catch (Exception e) {
+                        showMsg(e);
+                    }
+                    if (gsi(jComboBox1).equals("Marks Report(Multiple)") || gsi(jComboBox1).equals("Students Details(Multyple)")) {
                         break;
                     }
                 }

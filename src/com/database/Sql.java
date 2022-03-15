@@ -3,6 +3,7 @@ package com.database;
 import Standard.array;
 import com.Codes.Commons;
 import com.Codes.ImageWriter;
+import com.Codes.Out;
 import static com.database.DBconnect.CONN;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.Codes.System;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -36,7 +38,7 @@ public class Sql {
 
     public static void Execute(String sql, Connection conn) throws SQLException {
         PreparedStatement pst1 = conn.prepareStatement(sql);
-        System.out.println("Executing query:" + sql);
+        Out.println("Executing query:" + sql);
         pst1.execute();
     }
 
@@ -64,7 +66,7 @@ public class Sql {
     public static File getTempImage(String sql, Connection conn) {
         try {
             ResultSet r = ExecuteSQL(sql, conn);
-            File f=null;
+            File f = null;
             if (r.next()) {
                 f = File.createTempFile("SMS TempFiles(Do not delete)", ".jpg");
                 f.deleteOnExit();
@@ -172,14 +174,14 @@ public class Sql {
     }
 
     public static void insertData(String pre, String table, List<Object> data, Connection conn) {
-        String[] a=new String[data.size()];
+        String[] a = new String[data.size()];
         for (int i = 0; i < a.length; i++) {
-            a[i]="?";
+            a[i] = "?";
         }
-        String sql = pre + "\"" + table + "\" VALUES ("+String.join(",",a)+")";
+        String sql = pre + "\"" + table + "\" VALUES (" + String.join(",", a) + ")";
         try {
             PreparedStatement rs = conn.prepareStatement(sql);
-            int i=1;
+            int i = 1;
             for (Object o : data) {
                 rs.setObject(i, o);
                 i++;
@@ -249,7 +251,7 @@ public class Sql {
     public static void insertDataToColumns(String string, Connection CONN, ArrayList<Double> marks) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public static void main(String[] args) {
         System.out.println(getTempImage("select image from images where ID='3099'", CONN).getAbsolutePath());
         try {

@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-
+import  com.Codes.System;
 public class BarCode {
 
     public static BufferedImage getBuffer(String data, BarcodeFormat formate, int w, int h) throws WriterException, IOException {

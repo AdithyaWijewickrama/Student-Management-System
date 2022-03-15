@@ -211,6 +211,7 @@ public final class Main_frame extends javax.swing.JFrame {
         } else if (frame instanceof Health_frame) {
             Health_frame.load(ids[0]);
         } else if (frame instanceof Print_frame) {
+            Print_frame.selectedIds=ids;
             Print_frame.load(ids);
         }
     }
@@ -428,7 +429,7 @@ public final class Main_frame extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         Message = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        jButton8 = new javax.swing.JButton();
 
         jMenuItem11.setText("Copy Text");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -957,7 +958,7 @@ public final class Main_frame extends javax.swing.JFrame {
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(fullbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1069,7 +1070,7 @@ public final class Main_frame extends javax.swing.JFrame {
         );
         MainDesktopLayout.setVerticalGroup(
             MainDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
         jScrollPane12.setViewportView(MainDesktop);
@@ -1092,7 +1093,12 @@ public final class Main_frame extends javax.swing.JFrame {
 
         jLabel4.setPreferredSize(new java.awt.Dimension(16, 16));
 
-        jProgressBar1.setStringPainted(true);
+        jButton8.setText("Logger");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1102,9 +1108,9 @@ public final class Main_frame extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Message, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-                .addGap(202, 202, 202)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Message, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addGap(325, 325, 325)
+                .addComponent(jButton8)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -1113,7 +1119,7 @@ public final class Main_frame extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1135,14 +1141,14 @@ public final class Main_frame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(NavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addComponent(boxPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+            .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1012, 680));
+        setSize(new java.awt.Dimension(1012, 709));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1445,6 +1451,10 @@ public final class Main_frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        com.Codes.System.out.show();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
 //    
     /**
      * @param args the command line arguments
@@ -1487,6 +1497,7 @@ public final class Main_frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel114;
@@ -1518,7 +1529,6 @@ public final class Main_frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
