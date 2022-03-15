@@ -47,6 +47,7 @@ import java.util.List;
 import static com.Codes.Commons.openFile;
 import static com.ManageDetails.Manage_frame.CONN;
 import static com.SystemSecurity.User_login.school;
+import static com.SystemSecurity.User_login.username;
 import com.database.Sql;
 import java.io.File;
 import java.sql.SQLException;
@@ -1388,13 +1389,13 @@ public final class Main_frame extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "'";
+            String sql = "UPDATE schooldetails set Name='" + scl_name.getText() + "',Address='" + scl_address.getText() + "',Email='" + scl_email.getText() + "',EmailPassword='" + scl_emailpsw.getText() + "',district='" + scl_district.getText() + "' WHERE Username='"+username+"'";
             Sql.Execute(sql, DBconnect.CONN);
             if (jTextField1.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE id='1'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Logo=? WHERE WHERE Username='"+username+"'"), jTextField1.getText());
             }
             if (jTextField2.getText().equals("")) {
-                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE id='1'"), jTextField1.getText());
+                Sql.insertImage(DBconnect.CONN.prepareStatement("UPDATE schooldetails SET Image=? WHERE WHERE Username='"+username+"'"), jTextField1.getText());
             }
         } catch (SQLException ex) {
             Commons.showMsg(ex);
