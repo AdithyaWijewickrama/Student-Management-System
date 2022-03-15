@@ -1214,7 +1214,7 @@ public class Print_frame extends javax.swing.JInternalFrame {
                 msg.setPath(out.concat("." + ext.getEXT()));
                 msg.display();
             } catch (Exception ex) {
-                System.out.println("**********************************Print error***********************************\n\t"+ex);
+                System.out.println("**********************************Print error***********************************\n\t" + ex);
                 Logger.getLogger(Print_frame.class.getName()).log(Level.WARNING, null, ex);
                 TrayMessage msg = new TrayMessage(("Could not save" + getDecrypted(FileName.getText(), idbox1.getText()) + "." + FileExtention.getSelectedItem().toString()), AppConfig.APPICON_50, AppConfig.APPNAME, "Error", TrayIcon.MessageType.ERROR);
                 try {
@@ -1625,8 +1625,8 @@ public class Print_frame extends javax.swing.JInternalFrame {
         String sel = jComboBox3.getSelectedItem().toString();
         String selS = "SetEmailSubject_".concat(sel).replace(' ', '_').replace(')', '_').replace('(', '_');
         String selB = "SetEmailBody_".concat(sel).replace(' ', '_').replace(')', '_').replace('(', '_');
-        Commons.setDefault(selS, Email_subj.getText(), CONN);
-        Commons.setDefault(selB, Email_body.getText(), CONN);
+        Commons.setDefault(selS, Email_subj.getText(), DBconnect.CONN);
+        Commons.setDefault(selB, Email_body.getText(), DBconnect.CONN);
         setEmail.hide();
         String subject = Email_subj.getText();
         String Body = Email_body.getText();
@@ -1635,16 +1635,19 @@ public class Print_frame extends javax.swing.JInternalFrame {
         for (String Id : selectedIds) {
             String out = SaveDir.getText().concat("\\" + getDecrypted(FileName.getText(), Id));
             String selection = jComboBox1.getSelectedItem().toString();
-            printWhole(Id, selection, out, ext);
+
+            if (gsi(jComboBox1).equals("Marks Report(Multiple)") || gsi(jComboBox1).equals("Student Details(Multiple)")) {
+//do not
+            } else {
+                printWhole(Id, selection, out, ext);
+            }
             try {
                 Mail.sendWithAttachment(school.getEmail(), school.getEmail_password(), getDecrypted(setEmail_Email.getText(), Id), getDecrypted(subject, Id), getDecrypted(Body, Id), out.concat("." + ext.getEXT()));
-
+                new TrayMessage("Mail sent", AppConfig.APPICON.getImage(), "Reciever: "+getDecrypted(setEmail_Email.getText(), Id)).display();
             } catch (MessagingException | IOException ex) {
-                Logger.getLogger(Print_frame.class
-                        .getName()).log(Level.SEVERE, null, ex);
-            }
-            if (gsi(jComboBox1).equals("Marks Report(Multiple)") || gsi(jComboBox1).equals("Student Details(Multiple)")) {
-                break;
+                System.out.println(ex);
+            } catch (AWTException ex) {
+                Logger.getLogger(Print_frame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButton68ActionPerformed

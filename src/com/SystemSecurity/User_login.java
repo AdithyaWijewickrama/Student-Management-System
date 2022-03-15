@@ -52,20 +52,22 @@ public final class User_login extends javax.swing.JFrame {
     public User_login(String laf) {
         this();
         switch (laf) {
-            case "dark":
+            case "dark": {
                 try {
                     UIManager.setLookAndFeel(new FlatDarkLaf());
                 } catch (UnsupportedLookAndFeelException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
-                break;
-            case "light":
+            }
+            break;
+            case "light": {
                 try {
                     UIManager.setLookAndFeel(new FlatLightLaf());
                 } catch (UnsupportedLookAndFeelException e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
-                break;
+            }
+            break;
             default:
                 break;
         }

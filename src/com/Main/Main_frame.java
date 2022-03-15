@@ -49,6 +49,7 @@ import static com.ManageDetails.Manage_frame.CONN;
 import static com.SystemSecurity.User_login.school;
 import static com.SystemSecurity.User_login.username;
 import com.database.Sql;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -211,7 +212,7 @@ public final class Main_frame extends javax.swing.JFrame {
         } else if (frame instanceof Health_frame) {
             Health_frame.load(ids[0]);
         } else if (frame instanceof Print_frame) {
-            Print_frame.selectedIds=ids;
+            Print_frame.selectedIds = ids;
             Print_frame.load(ids);
         }
     }
@@ -1452,7 +1453,11 @@ public final class Main_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        com.Codes.System.out.show();
+        if (com.Codes.System.out.b) {
+            com.Codes.System.out.update();
+        } else {
+            com.Codes.System.out.show();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
 //    
@@ -1462,7 +1467,7 @@ public final class Main_frame extends javax.swing.JFrame {
     public static void main(String args[]) {
 //
         try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
+            UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (UnsupportedLookAndFeelException e) {
             JOptionPane.showMessageDialog(null, e);
         }

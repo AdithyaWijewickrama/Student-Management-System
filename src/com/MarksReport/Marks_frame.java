@@ -1,5 +1,5 @@
 package com.MarksReport;
-import  com.Codes.System;
+
 import Standard.array;
 import com.Front.TextField;
 import com.Front.UI;
@@ -15,8 +15,6 @@ import static com.Main.Main_frame.getBorW;
 import static com.MarksReport.Marks.getGrades;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -27,7 +25,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.TrayIcon.MessageType;
 import com.Main.Selection;
-import com.ManageDetails.Manage_frame;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -76,16 +73,12 @@ public class Marks_frame extends javax.swing.JInternalFrame {
             if (t instanceof JButton) {
                 JButton btn = (JButton) t;
                 btn.addActionListener((ActionEvent e) -> {
-                    btn.setSelected(true);
                     for (Component t1 : selectTerm.getComponents()) {
                         if (t1 instanceof JButton) {
                             JButton btn1 = (JButton) t1;
-                            if (btn1.equals(btn)) {
-                                continue;
-                            }
+                            if(btn1.equals(t))continue;
                             if (btn1.isSelected()) {
-                                btn1.setSelected(false);
-                                btn1.dispatchEvent(new FocusEvent(btn1, FocusEvent.FOCUS_LOST));
+                                btn1.doClick();
                             }
                         }
                     }
@@ -296,7 +289,7 @@ public class Marks_frame extends javax.swing.JInternalFrame {
         int i = fields.get(con).indexOf(txt);
         char Key = evt.getKeyChar();
         if (Key == KeyEvent.VK_ENTER) {
-            if (i != -1 && i+1 < fields.get(con).size()) {
+            if (i != -1 && i + 1 < fields.get(con).size()) {
                 fields.get(con).get(i + 1).requestFocus();
             } else {
                 update_btn.requestFocus();

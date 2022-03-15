@@ -55,7 +55,7 @@ public class Print {
 
     public void Print() throws JRException, IOException {
         String ExtentionName = this.Extention.getEXT();
-//        System.out.println(Output.concat("." + ExtentionName));
+        System.out.println(Output.concat("." + ExtentionName));
         switch (this.Extention) {
             case PDF:
                 Ireport.pdf(Jrxml, map, CONN, Output.concat("." + ExtentionName));
